@@ -1,0 +1,13 @@
+# Local AI engines (free, offline once models are cached). Python 3.12 recommended.
+-r requirements.txt
+faster-whisper>=1.1        # speech recognition (Whisper on CTranslate2)
+piper-tts>=1.3             # neural text to speech; voices go in data/piper
+rapidocr-onnxruntime>=1.4  # PaddleOCR models on ONNX Runtime
+sentencepiece>=0.2         # offline translation (Argos models on CTranslate2)
+sacremoses>=0.1            #   tokenizer used by OPUS-MT based Argos packages (es↔en 1.9)
+subword-nmt>=0.3           #   BPE for those packages
+
+# Optional — speaker diarization. Pulls PyTorch (~1 GB) and needs VS_HF_TOKEN:
+#   pip install pyannote.audio
+# Optional — full PaddleOCR instead of RapidOCR (VS_OCR_PROVIDER=paddleocr):
+#   pip install paddleocr paddlepaddle

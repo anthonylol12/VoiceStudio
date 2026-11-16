@@ -1,0 +1,17 @@
+# Core API (always required)
+fastapi>=0.115
+uvicorn[standard]>=0.30
+sqlalchemy>=2.0
+psycopg[binary]>=3.2      # PostgreSQL driver (cloud deployments)
+pyjwt>=2.9
+python-multipart>=0.0.9
+pydantic-settings>=2.4
+numpy>=1.26
+# Document extraction
+pymupdf>=1.24
+openpyxl>=3.1
+xlrd>=2.0                 # legacy .xls
+beautifulsoup4>=4.12
+httpx>=0.27               # Azure Speech client + tests
+# Tests
+pytest>=8
