@@ -8,6 +8,21 @@ import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as p;
 import '../../core/i18n.dart';
 
+/// True when [url] uses plain HTTP to a host outside this device or the
+/// local network (private IPv4 ranges, localhost, *.local). Such traffic
+/// would expose audio and documents, so the UI warns about it.
+bool isInsecureRemoteUrl(String url) {
+  final u = Uri.tryParse(url.trim());
+  if (u == null || u.scheme != 'http') return false;
+  final h = u.host.toLowerCase();
+  if (h.isEmpty || h == 'localhost' || h == '::1' || h.endsWith('.local')) return false;
+  final m = RegExp(r'^(\d+)\.(\d+)\.(\d+)\.(\d+)$').firstMatch(h);
+  if (m == null) return true; // a public host name over HTTP
+  final a = int.parse(m[1]!), b = int.parse(m[2]!);
+  final private = a == 10 || a == 127 || (a == 192 && b == 168) || (a == 172 && b >= 16 && b <= 31) || (a == 169 && b == 254);
+  return !private;
+}
+
 class BackendException implements Exception {
   BackendException(this.message, {this.statusCode});
   final String message;

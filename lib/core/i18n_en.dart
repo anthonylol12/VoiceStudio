@@ -367,6 +367,8 @@ const Map<String, String> enStrings = {
   'Última sincronización: {0}': 'Last sync: {0}',
   'Errores: {0}': 'Errors: {0}',
   '{0} (versión del servidor)': '{0} (server version)',
+  'Conexión sin cifrar a un servidor fuera de tu red: el audio y los documentos viajarían sin protección. Usa https://.':
+      'Unencrypted connection to a server outside your network: audio and documents would travel unprotected. Use https://.',
   // Language selector
   'Idioma de la interfaz': 'Interface language',
   'Inglés': 'English',

@@ -53,24 +53,21 @@ Voice Studio tiene dos partes:
 
 ## 2. Instalación en el PC (Windows)
 
-### 2.1 Requisitos
+### 2.1 Descargar e instalar
 
-- Windows 10 u 11.
-- Para compilar la app: Flutter, Visual Studio con C++ y NuGet (ver [BUILD.md](BUILD.md)).
-- **Modo de desarrollador** activado: *Configuración → Sistema → Para programadores → Modo de desarrollador*.
-- Para el backend: Python 3.12 y FFmpeg.
+1. Entra en **[Descargas (Releases)](https://github.com/anthonylol12/VoiceStudio/releases/latest)** y descarga `VoiceStudio-0.1.0-windows-x64.zip` (Windows 10/11 de 64 bits, ~18 MB).
+2. **Descomprímelo** (clic derecho → *Extraer todo*) en una carpeta, por ejemplo `C:\Programas\VoiceStudio`. No lo abras desde dentro del ZIP.
+3. Abre `voice_studio.exe`. Si aparece *"Windows protegió su PC"*, pulsa **Más información → Ejecutar de todas formas** (la app no está firmada con un certificado de pago).
+4. Opcional: clic derecho en `voice_studio.exe` → *Enviar a → Escritorio (crear acceso directo)*.
 
-> Todavía no hay instalador. Por ahora la app se compila desde el código (ver [BUILD.md](BUILD.md)).
+Mantén todos los archivos de la carpeta juntos. Tus datos se guardan en `%APPDATA%\com.voicestudio`, no en esa carpeta, así que puedes reemplazarla al actualizar sin perder nada.
 
-### 2.2 Abrir la app
+### 2.2 Requisitos del backend (solo si vas a transcribir, hacer OCR o traducir en el PC)
 
-Después de compilarla, el programa está en:
+- Python 3.12 y FFmpeg.
+- El código del proyecto: descarga el *Source code (zip)* desde la misma página de Releases o clona el repositorio.
 
-```
-build\windows\x64\runner\Debug\voice_studio.exe
-```
-
-Haz doble clic en él (puedes crear un acceso directo en el escritorio).
+> ¿Prefieres compilar la app tú mismo? Ver [BUILD.md](BUILD.md) (Flutter, Visual Studio con C++, NuGet y Modo de desarrollador).
 
 ### 2.3 Arrancar el backend (para transcribir, OCR y traducir)
 
@@ -103,18 +100,18 @@ En la app: **Configuración → Backend de IA → Guardar y probar conexión**. 
 
 ## 3. Instalación en el teléfono (Android)
 
-### 3.1 Instalar la app
+### 3.1 Descargar e instalar
 
-La app de Android se compila en el PC (ver [BUILD.md](BUILD.md)) y genera:
+1. Desde el teléfono, entra en **[Descargas (Releases)](https://github.com/anthonylol12/VoiceStudio/releases/latest)** y descarga:
+   - `VoiceStudio-0.1.0-android-arm64.apk` → casi todos los teléfonos de los últimos años (~56 MB).
+   - `VoiceStudio-0.1.0-android-arm32.apk` → teléfonos antiguos de 32 bits.
+   - `VoiceStudio-0.1.0-android-universal.apk` → si no sabes cuál o el anterior no se instala (~152 MB, sirve para todos).
+2. Abre el archivo descargado. Android pedirá permitir **"Instalar apps desconocidas"** para el navegador o el gestor de archivos: actívalo y vuelve atrás.
+3. Pulsa **Instalar**. Si Play Protect avisa de que la app no es conocida, elige **"Instalar de todas formas"** (no está publicada en Google Play).
 
-```
-build\app\outputs\flutter-apk\app-debug.apk
-```
+Requiere Android 7.0 o superior.
 
-Formas de instalarla:
-
-- **Con cable USB** (recomendado): activa *Opciones de desarrollador → Depuración USB* en el teléfono, conéctalo y ejecuta en el PC `flutter run -d android`, o `adb install build\app\outputs\flutter-apk\app-debug.apk`.
-- **Copiando el archivo**: pasa el `.apk` al teléfono, ábrelo y permite *Instalar apps desconocidas* para el gestor de archivos cuando Android lo pida.
+> También puedes compilarla e instalarla por USB desde el PC: ver [BUILD.md](BUILD.md).
 
 ### 3.2 Permisos
 
@@ -136,7 +133,9 @@ Android pedirá permisos la primera vez que los necesites:
 3. En el teléfono (misma Wi‑Fi): **Configuración → URL del backend** → `http://192.168.1.20:8765` → *Guardar y probar conexión*.
 4. Recomendado: en `backend\.env` pon `VS_REQUIRE_AUTH_FOR_AI=true` para que solo usuarios con sesión puedan usar el servidor.
 
-> La versión de depuración permite `http://` en la red local. Una versión de publicación exige un servidor con `https://`.
+> `http://` está bien dentro de tu red de casa o del trabajo. Si algún día usas un servidor **fuera** de tu red, usa `https://`: la app muestra un aviso en rojo si escribes una dirección `http://` pública.
+>
+> Sin el backend también funcionan: leer, grabar, OCR de fotos, traducción y la transcripción en directo con el **reconocedor del dispositivo**.
 
 ### 3.4 iPhone
 

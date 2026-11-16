@@ -129,6 +129,15 @@ Instalado en esta sesión (con autorización): Flutter 3.50.0 stable en `%USERPR
 
 Pruebas: `flutter test` 54/54, `pytest` 24/24.
 
+## 2026‑11‑15 — Versión descargable 0.1.0 (GitHub Releases)
+
+- Publicada en https://github.com/anthonylol12/VoiceStudio/releases/tag/v0.1.0: APK Android arm64 (56 MB), arm32 (43 MB), x86_64 (59 MB), universal (152 MB) y ZIP de Windows x64 (18 MB, incluye las DLL redistribuibles de Visual C++ y LEEME.txt).
+- Errores corregidos al compilar las versiones finales:
+  1. R8 fallaba por clases opcionales de ML Kit (OCR chino/japonés/coreano/devanagari) → `android/app/proguard-rules.pro`.
+  2. La APK final bloqueaba `http://`, así que el teléfono no podía usar el backend del PC por Wi‑Fi (solo funcionaba en la versión de depuración) → se permite `http` y Configuración muestra un aviso si la URL es `http` a un servidor fuera de la red local (`isInsecureRemoteUrl`, con pruebas).
+- Verificado: firma de las 4 APK (`apksigner`), manifiesto (`usesCleartextTraffic=true`, permisos, minSdk 24), ZIP descomprimido en una carpeta nueva → la app abre, carga datos, graba y guarda, y muestra el aviso de `http`; integridad SHA‑256 de las descargas desde GitHub.
+- APK firmadas con la clave de depuración de este PC (pendiente: clave de publicación propia). No probadas en un teléfono real.
+
 ### Compilación
 - **Android (debug)**: ✅ `build\app\outputs\flutter-apk\app-debug.apk` (222 MB, debug sin reducir) compilado tras trasladar el proyecto a una ruta corta (`%USERPROFILE%\dev\VoiceStudio`). Aún no instalado en un dispositivo.
 - Tras el traslado: `flutter analyze` sin incidencias, `flutter test` 32/32, `pytest` 16/16 con el venv recreado.

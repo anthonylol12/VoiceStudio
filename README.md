@@ -6,7 +6,17 @@ Asistente de voz para leer documentos y órdenes de trabajo en voz alta, grabar 
 - **Backend**: Python 3.12 + FastAPI — faster‑whisper, pyannote.audio, Piper, RapidOCR (modelos PaddleOCR), PyMuPDF, openpyxl, FFmpeg.
 - **Datos**: SQLite local (sin conexión) · SQLite o PostgreSQL en el servidor.
 
-📖 **[Manual de uso (PC y teléfono)](documentation/MANUAL_USUARIO.md)**
+## ⬇️ Descargar
+
+**[Última versión (Releases)](https://github.com/anthonylol12/VoiceStudio/releases/latest)**
+
+| Dispositivo | Archivo |
+|---|---|
+| 📱 Android (la mayoría de teléfonos) | [`VoiceStudio-0.1.0-android-arm64.apk`](https://github.com/anthonylol12/VoiceStudio/releases/download/v0.1.0/VoiceStudio-0.1.0-android-arm64.apk) |
+| 📱 Android (si no sabes cuál) | [`VoiceStudio-0.1.0-android-universal.apk`](https://github.com/anthonylol12/VoiceStudio/releases/download/v0.1.0/VoiceStudio-0.1.0-android-universal.apk) |
+| 🖥️ Windows 10/11 (64 bits) | [`VoiceStudio-0.1.0-windows-x64.zip`](https://github.com/anthonylol12/VoiceStudio/releases/download/v0.1.0/VoiceStudio-0.1.0-windows-x64.zip) |
+
+📖 **[Manual de uso (PC y teléfono)](documentation/MANUAL_USUARIO.md)**: instalación paso a paso y uso de cada función.
 
 ## Módulos
 

@@ -161,7 +161,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 controller: _url,
                 decoration: InputDecoration(labelText: tr('URL del backend'), hintText: 'http://127.0.0.1:8765'),
                 onSubmitted: (_) => _test(),
+                onChanged: (_) => setState(() {}),
               ),
+              if (isInsecureRemoteUrl(_url.text))
+                Padding(
+                  padding: const EdgeInsets.only(top: 6),
+                  child: Row(children: [
+                    Icon(Icons.warning_amber, color: scheme.error, size: 18),
+                    const SizedBox(width: 6),
+                    Expanded(
+                      child: Text(
+                        tr('Conexión sin cifrar a un servidor fuera de tu red: el audio y los documentos viajarían sin protección. Usa https://.'),
+                        style: TextStyle(color: scheme.error),
+                      ),
+                    ),
+                  ]),
+                ),
               if (!Platform.isWindows)
                 Padding(
                   padding: EdgeInsets.only(top: 6),

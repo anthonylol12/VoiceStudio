@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:voice_studio/audio/wav_writer.dart';
 import 'package:voice_studio/models/models.dart';
 import 'package:voice_studio/readers/text_formats.dart';
+import 'package:voice_studio/services/backend/backend_client.dart';
 import 'package:voice_studio/transcription/transcript_export.dart';
 
 void main() {
@@ -87,6 +88,18 @@ void main() {
     final srt = TranscriptExport.toSrt(segs, {});
     expect(srt, startsWith('1\n00:00:04,000 --> 00:00:08,000\nPersona 1: Mañana'));
     expect(TranscriptExport.toJson(rec, segs, {}), contains('"S2": "Persona 2"'));
+  });
+
+  test('plain HTTP is only flagged for servers outside the local network', () {
+    for (final ok in [
+      'http://127.0.0.1:8765', 'http://localhost:8765', 'http://192.168.1.20:8765', 'http://10.0.0.5:8765',
+      'http://172.20.1.2:8765', 'http://mipc.local:8765', 'https://voice.example.com', 'https://8.8.8.8',
+    ]) {
+      expect(isInsecureRemoteUrl(ok), isFalse, reason: ok);
+    }
+    for (final bad in ['http://voice.example.com', 'http://8.8.8.8:8765', 'http://172.32.0.1']) {
+      expect(isInsecureRemoteUrl(bad), isTrue, reason: bad);
+    }
   });
 
   test('speaker defaults and timestamps', () {
