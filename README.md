@@ -79,3 +79,9 @@ cd backend; .\.venv\Scripts\python.exe -m pytest   # 24 pruebas
 ## Privacidad
 
 La grabación solo empieza al pulsar un botón; no hay activación automática. Nada sale del dispositivo sin consentimiento explícito, y solo se sincroniza lo que el usuario marca. No se hace identificación biométrica de hablantes. Informa y obtén el consentimiento de las personas antes de grabarlas, según la ley aplicable.
+
+## Licencia
+
+Código publicado bajo la [licencia MIT](LICENSE).
+
+Los modelos de IA no se incluyen en el repositorio y se descargan aparte con sus propias licencias: Whisper (MIT), voces Piper (según cada voz, ver su `MODEL_CARD`), modelos de traducción Argos/OPUS‑MT (CC‑BY 4.0) y pyannote (requiere aceptar sus condiciones en Hugging Face).
